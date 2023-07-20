@@ -71,8 +71,9 @@ function openTicketModal(e) {
     return;
   }
 
-  let ticketModal = document.createElement("div");
-  ticketModal.classList.add("ticket-modal");
+  let ticketModal = document.createElement("div"); // create <div></div>
+  ticketModal.classList.add("ticket-modal");  // create <div class ="ticket-modal"></div>
+  // adding inner part of ticket-modal or all  html part 
   ticketModal.innerHTML = `
     
         <div class="ticket-text" contenteditable="true" spellcheck="false" >Enter your text
@@ -175,7 +176,7 @@ function appendTicket(ticketInfoObject) {
    
     let currentFilter = e.target.classList[1]; // yellow
     let indexOfCurrFilter = allFilterClasses.indexOf(currentFilter); // 3
-    let newIndex = (indexOfCurrFilter + 1) % allFilterClasses.length;
+    let newIndex = (indexOfCurrFilter + 1) % allFilterClasses.length; // we move in circular way that's why we use %
     let newFilter = allFilterClasses[newIndex];
       console.log({currentFilter,newFilter});
       console.log(ticketHeader)
@@ -184,6 +185,7 @@ function appendTicket(ticketInfoObject) {
     ticketHeader.classList.add(newFilter);
 
     let allTickets = JSON.parse(myDB.getItem("allTickets"));
+    // to convert from string to json we use JSON.parse
 
     for (let i = 0; i < allTickets.length; i++) {
       if (allTickets[i].ticketId == ticketId) {
